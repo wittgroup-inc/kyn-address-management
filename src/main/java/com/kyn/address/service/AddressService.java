@@ -4,10 +4,13 @@ import com.kyn.address.domain.Address;
 import com.kyn.address.domain.Locality;
 import com.kyn.address.model.AddressDTO;
 import com.kyn.address.repos.AddressRepository;
+
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import com.kyn.address.repos.ApartmentRepository;
 import com.kyn.address.repos.LocalityRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -20,10 +23,12 @@ public class AddressService {
 
     private final AddressRepository addressRepository;
     private final LocalityRepository localityRepository;
+    private final ApartmentRepository apartmentRepository;
 
-    public AddressService(final AddressRepository addressRepository, final LocalityRepository localityRepository) {
+    public AddressService(final AddressRepository addressRepository, final LocalityRepository localityRepository, final ApartmentRepository apartmentRepository) {
         this.addressRepository = addressRepository;
         this.localityRepository = localityRepository;
+        this.apartmentRepository = apartmentRepository;
     }
 
     public List<AddressDTO> findAll() {
@@ -58,12 +63,18 @@ public class AddressService {
 
     private AddressDTO mapToDTO(final Address address, final AddressDTO addressDTO) {
         addressDTO.setId(address.getId());
+        addressDTO.setFlat(address.getFlat());
+        addressDTO.setApartment(address.getApartment() == null ? null : apartmentRepository.findById(address.getApartment()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+        addressDTO.setLocality(address.getLocality() == null ? null : localityRepository.findById(address.getLocality()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
         return addressDTO;
     }
 
     private Address mapToEntity(final AddressDTO addressDTO, final Address address) {
-        Locality locality = addressDTO.getLocality() == null ? Locality.EMPTY : localityRepository.findById(addressDTO.getLocality()) .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "locality not found"));
-        address.setLocality(locality);
+        address.setId(addressDTO.getId());
+        address.setFlat(addressDTO.getFlat());
+        address.setLocality(localityRepository.findById(addressDTO.getLocality().getId())
+                .orElseGet(() -> localityRepository.save(addressDTO.getLocality())).getId());
+        address.setApartment(apartmentRepository.findById(addressDTO.getApartment().getId()).orElseGet(() -> apartmentRepository.save(addressDTO.getApartment())).getId());
         return address;
     }
 

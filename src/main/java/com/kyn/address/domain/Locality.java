@@ -33,10 +33,6 @@ public class Locality {
     @Size(max = 255)
     private String pinCode;
 
-    @DocumentReference(lazy = true)
-    private Apartment apartment;
-
-    @DocumentReference(lazy = true)
     private GeoLocation geoLocation;
 
     @CreatedDate

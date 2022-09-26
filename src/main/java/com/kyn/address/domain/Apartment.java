@@ -31,10 +31,6 @@ public class Apartment {
     @Size(max = 255)
     private String displayPicUrl;
 
-    @DocumentReference(lazy = true)
-    private Flat flat;
-
-    @DocumentReference(lazy = true)
     private GeoLocation geoLocation;
 
     @CreatedDate

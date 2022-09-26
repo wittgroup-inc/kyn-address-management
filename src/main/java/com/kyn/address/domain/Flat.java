@@ -14,13 +14,9 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 
-@Document
 @Getter
 @Setter
 public class Flat {
-
-    @Id
-    private UUID id;
 
     @Size(max = 255)
     private String flatNumber;
@@ -30,18 +26,6 @@ public class Flat {
 
     @Size(max = 255)
     private String floor;
-
-    @DocumentReference(lazy = true)
-    private Apartment apartment;
-
-    @CreatedDate
-    private OffsetDateTime dateCreated;
-
-    @LastModifiedDate
-    private OffsetDateTime lastUpdated;
-
-    @Version
-    private Integer version;
 
     public static final Flat EMPTY = new Flat();
 

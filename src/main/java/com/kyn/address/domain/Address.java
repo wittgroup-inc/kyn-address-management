@@ -6,8 +6,8 @@ import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
+import javax.validation.constraints.Size;
 import java.time.OffsetDateTime;
-import java.util.Set;
 import java.util.UUID;
 
 
@@ -19,8 +19,11 @@ public class Address {
     @Id
     private UUID id;
 
-    @DocumentReference(lazy = true)
-    private Locality locality;
+    private Flat flat;
+
+    private UUID apartment;
+
+    private UUID locality;
 
     @CreatedDate
     private OffsetDateTime dateCreated;

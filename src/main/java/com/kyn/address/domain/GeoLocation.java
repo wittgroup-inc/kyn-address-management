@@ -11,28 +11,15 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 
-@Document
 @Getter
 @Setter
 public class GeoLocation {
-
-    @Id
-    private UUID id;
 
     @NotNull
     private Long latitude;
 
     @NotNull
     private Long longitude;
-
-    @CreatedDate
-    private OffsetDateTime dateCreated;
-
-    @LastModifiedDate
-    private OffsetDateTime lastUpdated;
-
-    @Version
-    private Integer version;
 
     public static final GeoLocation EMPTY = new GeoLocation();
 }
