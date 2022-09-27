@@ -1,14 +1,9 @@
-package com.kyn.address.domain;
+package com.kyn.address.models;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.*;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import javax.validation.constraints.NotNull;
-import java.time.OffsetDateTime;
-import java.util.UUID;
 
 
 @Getter

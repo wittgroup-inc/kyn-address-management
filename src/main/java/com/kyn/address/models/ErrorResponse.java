@@ -1,4 +1,4 @@
-package com.kyn.address.model;
+package com.kyn.address.models;
 
 import java.util.List;
 

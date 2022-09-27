@@ -1,20 +1,19 @@
-package com.kyn.address.domain;
+package com.kyn.address.db.entities;
 
+import com.kyn.address.models.Flat;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
-import javax.validation.constraints.Size;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
 
-@Document
+@Document("address")
 @Getter
 @Setter
-public class Address {
+public class AddressEntity {
 
     @Id
     private UUID id;
@@ -34,5 +33,4 @@ public class Address {
     @Version
     private Integer version;
 
-    public static final Address EMPTY = new Address();
 }

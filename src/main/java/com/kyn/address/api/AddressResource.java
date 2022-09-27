@@ -1,7 +1,7 @@
-package com.kyn.address.rest;
+package com.kyn.address.api;
 
-import com.kyn.address.model.AddressDTO;
-import com.kyn.address.service.AddressService;
+import com.kyn.address.models.Address;
+import com.kyn.address.services.AddressService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.util.List;
 import java.util.UUID;
@@ -30,24 +30,24 @@ public class AddressResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<AddressDTO>> getAllAddresss() {
+    public ResponseEntity<List<Address>> getAllAddresss() {
         return ResponseEntity.ok(addressService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AddressDTO> getAddress(@PathVariable final UUID id) {
+    public ResponseEntity<Address> getAddress(@PathVariable final UUID id) {
         return ResponseEntity.ok(addressService.get(id));
     }
 
     @PostMapping
     @ApiResponse(responseCode = "201")
-    public ResponseEntity<UUID> createAddress(@RequestBody @Valid final AddressDTO addressDTO) {
+    public ResponseEntity<UUID> createAddress(@RequestBody @Valid final Address addressDTO) {
         return new ResponseEntity<>(addressService.create(addressDTO), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateAddress(@PathVariable final UUID id,
-            @RequestBody @Valid final AddressDTO addressDTO) {
+            @RequestBody @Valid final Address addressDTO) {
         addressService.update(id, addressDTO);
         return ResponseEntity.ok().build();
     }

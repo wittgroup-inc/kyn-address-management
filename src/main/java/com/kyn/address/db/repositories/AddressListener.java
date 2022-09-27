@@ -1,18 +1,17 @@
-package com.kyn.address.repos;
+package com.kyn.address.db.repositories;
 
+import com.kyn.address.db.entities.AddressEntity;
 import java.util.UUID;
-
-import com.kyn.address.domain.Apartment;
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
 import org.springframework.data.mongodb.core.mapping.event.BeforeConvertEvent;
 import org.springframework.stereotype.Component;
 
 
 @Component
-public class ApartmentListener extends AbstractMongoEventListener<Apartment> {
+public class AddressListener extends AbstractMongoEventListener<AddressEntity> {
 
     @Override
-    public void onBeforeConvert(final BeforeConvertEvent<Apartment> event) {
+    public void onBeforeConvert(final BeforeConvertEvent<AddressEntity> event) {
         if (event.getSource().getId() == null) {
             event.getSource().setId(UUID.randomUUID());
         }

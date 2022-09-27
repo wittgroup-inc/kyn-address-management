@@ -1,7 +1,7 @@
 package com.kyn.address.config;
 
-import com.kyn.address.model.ErrorResponse;
-import com.kyn.address.model.FieldError;
+import com.kyn.address.models.ErrorResponse;
+import com.kyn.address.models.FieldError;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.util.List;
 import java.util.stream.Collectors;
