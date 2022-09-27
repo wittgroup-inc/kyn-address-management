@@ -1,4 +1,4 @@
-package com.kyn.address.util;
+package com.kyn.address.utils;
 
 import java.time.OffsetDateTime;
 import java.util.Date;

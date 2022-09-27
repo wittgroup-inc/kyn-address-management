@@ -1,22 +1,21 @@
-package com.kyn.address.domain;
+package com.kyn.address.db.entities;
 
+import com.kyn.address.models.GeoLocation;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.OffsetDateTime;
-import java.util.Set;
 import java.util.UUID;
 
 
-@Document
+@Document("apartment")
 @Getter
 @Setter
-public class Apartment {
+public class ApartmentEntity {
 
     @Id
     private UUID id;
@@ -42,5 +41,4 @@ public class Apartment {
     @Version
     private Integer version;
 
-    public static final Apartment EMPTY = new Apartment();
 }

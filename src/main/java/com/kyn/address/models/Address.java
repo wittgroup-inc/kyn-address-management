@@ -1,8 +1,5 @@
-package com.kyn.address.model;
+package com.kyn.address.models;
 
-import com.kyn.address.domain.Apartment;
-import com.kyn.address.domain.Flat;
-import com.kyn.address.domain.Locality;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +8,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class AddressDTO {
+public class Address {
 
     private UUID id;
 
