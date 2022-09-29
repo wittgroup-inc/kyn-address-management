@@ -47,16 +47,13 @@ public class AddressService {
     }
 
     public UUID create(final Address address) {
-        final AddressEntity entity = new AddressEntity();
-        mapToAddressEntity(address, entity);
-        return addressRepository.save(entity).getId();
+        return addressRepository.save(mapToAddressEntity(address, new AddressEntity())).getId();
     }
 
     public void update(final UUID id, final Address address) {
         final AddressEntity entity = addressRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        mapToAddressEntity(address, entity);
-        addressRepository.save(entity);
+        addressRepository.save(mapToAddressEntity(address, entity));
     }
 
     public void delete(final UUID id) {
