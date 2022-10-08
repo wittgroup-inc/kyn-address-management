@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class AddressApplication {
+public class KynAddressApplication {
 
     public static void main(final String[] args) {
-        SpringApplication.run(AddressApplication.class, args);
+        SpringApplication.run(KynAddressApplication.class, args);
     }
 
 }
