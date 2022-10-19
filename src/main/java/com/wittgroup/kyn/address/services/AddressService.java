@@ -47,7 +47,7 @@ public class AddressService {
     }
 
     public void update(final UUID id, final Address address) {
-        AddressEntity entity = addressRepository.findById(id)
+        final AddressEntity entity = addressRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         addressRepository.save(mapToAddressEntity(address, entity));
     }
@@ -65,7 +65,7 @@ public class AddressService {
         return address;
     }
 
-    private AddressEntity mapToAddressEntity(final Address address, AddressEntity entity) {
+    private AddressEntity mapToAddressEntity(final Address address, final AddressEntity entity) {
         entity.setId(address.getId());
         entity.setFlat(address.getFlat());
         entity.setLocality(localityRepository.findById(address.getLocality().getId())
