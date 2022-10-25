@@ -68,9 +68,20 @@ public class AddressService {
     private AddressEntity mapToAddressEntity(final Address address, final AddressEntity entity) {
         entity.setId(address.getId());
         entity.setFlat(address.getFlat());
-        entity.setLocality(localityRepository.findById(address.getLocality().getId())
-                .orElseGet(() -> localityRepository.save(mapToLocalityEntity(address.getLocality()))).getId());
-        entity.setApartment(apartmentRepository.findById(address.getApartment().getId()).orElseGet(() -> apartmentRepository.save(mapToLocalityEntity(address.getApartment()))).getId());
+
+        if (address.getLocality().getId() != null) {
+            entity.setLocality(localityRepository.findById(address.getLocality().getId())
+                    .orElseGet(() -> localityRepository.save(mapToLocalityEntity(address.getLocality()))).getId());
+        } else {
+            entity.setLocality(localityRepository.save(mapToLocalityEntity(address.getLocality())).getId());
+        }
+
+        if (address.getApartment().getId() != null) {
+            entity.setApartment(apartmentRepository.findById(address.getApartment().getId()).orElseGet(() -> apartmentRepository.save(mapToLocalityEntity(address.getApartment()))).getId());
+        } else {
+            entity.setApartment(apartmentRepository.save(mapToLocalityEntity(address.getApartment())).getId());
+        }
+
         return entity;
     }
 
