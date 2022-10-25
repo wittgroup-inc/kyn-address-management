@@ -20,7 +20,6 @@ public class ApartmentEntity {
     @Id
     private UUID id;
 
-    @NotNull
     @Size(max = 255)
     private String holdingNumber;
 

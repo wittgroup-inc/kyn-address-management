@@ -6,6 +6,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.util.List;
 import java.util.UUID;
 import javax.validation.Valid;
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,16 +23,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/api/address", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequiredArgsConstructor
 public class AddressResource {
 
     private final AddressService addressService;
 
-    public AddressResource(final AddressService addressService) {
-        this.addressService = addressService;
-    }
-
     @GetMapping
-    public ResponseEntity<List<Address>> getAllAddresss() {
+    public ResponseEntity<List<Address>> getAllAddresses() {
         return ResponseEntity.ok(addressService.findAll());
     }
 

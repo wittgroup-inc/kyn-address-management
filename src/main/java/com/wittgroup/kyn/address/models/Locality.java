@@ -1,37 +1,30 @@
 package com.wittgroup.kyn.address.models;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Data;
+import lombok.NonNull;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.UUID;
 
 
-@Document
-@Getter
-@Setter
+@Data
 public class Locality {
 
-    @Id
     private UUID id;
 
-    @NotNull
+    @NotNull @NonNull
     @Size(max = 255)
     private String name;
 
-    @NotNull
+    @NotNull @NonNull
     @Size(max = 255)
     private String city;
 
-    @NotNull
+    @NotNull @NonNull
     @Size(max = 255)
     private String pinCode;
 
     private GeoLocation geoLocation;
-
-    public static final Locality EMPTY = new Locality();
 
 }
