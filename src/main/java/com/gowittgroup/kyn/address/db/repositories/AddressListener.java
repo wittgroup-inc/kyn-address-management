@@ -1,11 +1,11 @@
 package com.gowittgroup.kyn.address.db.repositories;
 
 import com.gowittgroup.kyn.address.db.entities.AddressEntity;
-import java.util.UUID;
-
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
 import org.springframework.data.mongodb.core.mapping.event.BeforeConvertEvent;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 
 @Component

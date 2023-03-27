@@ -3,15 +3,10 @@ package com.gowittgroup.kyn.address.services;
 import com.gowittgroup.kyn.address.db.entities.AddressEntity;
 import com.gowittgroup.kyn.address.db.entities.ApartmentEntity;
 import com.gowittgroup.kyn.address.db.entities.LocalityEntity;
-import com.gowittgroup.kyn.address.models.Address;
 import com.gowittgroup.kyn.address.db.repositories.AddressRepository;
-
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
 import com.gowittgroup.kyn.address.db.repositories.ApartmentRepository;
 import com.gowittgroup.kyn.address.db.repositories.LocalityRepository;
+import com.gowittgroup.kyn.address.models.Address;
 import com.gowittgroup.kyn.address.models.Apartment;
 import com.gowittgroup.kyn.address.models.Locality;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +14,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Service
